@@ -10,7 +10,7 @@ Welcome to the News Site project! This application allows users to view, upload,
 - Edit and delete own news articles (requires login)
 
 ## A Little Sample
-<img src="URL_to_the_GIF" alt="A Little Part Of The Project.">
+<img src="https://github.com/JoyBiswasgithub/Simple-News-Application-Django-/blob/main/68d678fa-f457-478a-80e2-1c2d892fdc4f.gif" alt="A Little Part Of The Project.">
 
 ## Technologies Used
 
