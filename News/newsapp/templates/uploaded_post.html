@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Your Uploaded Posts</h2>
+
+    {% if news %}
+        <div class="row">
+            {% for post in news %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text flex-grow-1 overflow-hidden" style="max-height: 100px; overflow: hidden;">
+                                {{ post.desc|truncatewords:20 }}
+                            </p>
+                            <p class="text-muted mt-2">Posted on {{ post.uploaded_at|date:"F j, Y, g:i a" }}</p>
+                            
+                            <!-- Edit Button (Aligned to the bottom-right corner) -->
+                            <div class="mt-auto">
+                                <a href="{% url 'news_edit' post.pk %}" class="btn btn-warning float-end">Edit</a>
+                            </div>
+
+                            <!-- Delete Button Form (Aligned to the bottom-left corner) -->
+                            <div class="mt-2">
+                                <form action="{% url 'uploaded_post' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="delete_id" value="{{ post.pk }}">
+                                    <button type="submit" class="btn btn-danger w-100">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">You have not uploaded any posts yet.</p>
+    {% endif %}
+</div>
+{% endblock content %}

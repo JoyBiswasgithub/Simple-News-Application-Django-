@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All News</h2>
+    
+    {% if news_posts %}
+        <div class="row">
+            {% for post in news_posts %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm" style="min-height: 300px; max-height: 300px;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text flex-grow-1 overflow-hidden" style="max-height: 100px; overflow: hidden;">
+                                {{ post.desc|truncatewords:20 }}
+                            </p>
+                            <p class="text-muted mt-2">Posted by {{ post.user.username }} on {{ post.uploaded_at|date:"F j, Y, g:i a" }}</p>
+                            <a href="{% url 'news_detail' post.pk %}" class="btn btn-primary mt-auto">Read More</a>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No news posts available at the moment.</p>
+    {% endif %}
+</div>
+{% endblock content %}
