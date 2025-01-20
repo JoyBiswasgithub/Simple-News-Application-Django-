@@ -9,6 +9,9 @@ Welcome to the News Site project! This application allows users to view, upload,
 - Upload news articles (requires login)
 - Edit and delete own news articles (requires login)
 
+## A Little Sample
+<img src="URL_to_the_GIF" alt="A Little Part Of The Project.">
+
 ## Technologies Used
 
 - **Frontend:**
